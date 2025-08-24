@@ -1,8 +1,10 @@
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYWVzb20iLCJhIjoiY21lZzEzdHM4MHVzdjJqc2Y4cGtrMzJseSJ9.7j6FIpAePZGj6gOidJ35Hw";
 
-const geoLocate = document.getElementById("geolocate");
 
+import {getWeather} from "./weather.js";
+
+const geoLocate = document.getElementById("geolocate");
 let currentMarker = null;
 
 
@@ -25,14 +27,17 @@ map.on("style.load", () => {
 geoLocate.addEventListener("click", () => {
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition((position) => {
+      let coords = [position.coords.longitude, position.coords.latitude]
       map.flyTo({
         center: [position.coords.longitude, position.coords.latitude],
         zoom: 15,
       });
       if (currentMarker) {
-			currentMarker.remove();
-		}
-		currentMarker = new mapboxgl.Marker().setLngLat([position.coords.longitude, position.coords.latitude]).addTo(map);
+        currentMarker.remove();
+      }
+      currentMarker = new mapboxgl.Marker().setLngLat([position.coords.longitude, position.coords.latitude]).addTo(map);
+      getWeather(coords);
     });
   }
 });
+
