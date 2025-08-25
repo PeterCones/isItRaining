@@ -1,9 +1,14 @@
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYWVzb20iLCJhIjoiY21lZzEzdHM4MHVzdjJqc2Y4cGtrMzJseSJ9.7j6FIpAePZGj6gOidJ35Hw";
 
-const geoLocate = document.getElementById("geolocate");
 
+import {getWeather} from "./weather.js";
+
+const geoLocate = document.getElementById("geolocate");
 let currentMarker = null;
+
+window.addEventListener("DOMContentLoaded", getUserLocation);
+geoLocate.addEventListener("click", getUserLocation);
 
 
 const map = new mapboxgl.Map({
@@ -22,17 +27,22 @@ map.on("style.load", () => {
   map.setFog({});
 });
 
-geoLocate.addEventListener("click", () => {
+
+
+function getUserLocation() {
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition((position) => {
+      let coords = [position.coords.longitude, position.coords.latitude];
       map.flyTo({
-        center: [position.coords.longitude, position.coords.latitude],
+        center: coords,
         zoom: 15,
       });
       if (currentMarker) {
-			currentMarker.remove();
-		}
-		currentMarker = new mapboxgl.Marker().setLngLat([position.coords.longitude, position.coords.latitude]).addTo(map);
+        currentMarker.remove();
+      }
+      currentMarker = new mapboxgl.Marker().setLngLat(coords).addTo(map);
+      getWeather(coords);
     });
   }
-});
+}
+

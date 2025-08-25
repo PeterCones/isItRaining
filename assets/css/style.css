@@ -23,9 +23,22 @@
     border: none;
 }
 
+#current {
+  height: 30vh;
+    width: 100%;
+
+  background-color: red;
+}
+
+#weekly {
+  height: 46vh;
+  width: 100%;
+  background-color: blue;
+}
+
 #map {
     width: 100%;
-    height: 60vh; /* or 500px, or whatever fits your design */
+    height: 78vh; 
     min-height: 300px;
     border-radius: 1rem;
     margin-top: 1rem;
