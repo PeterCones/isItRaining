@@ -27,13 +27,13 @@
   height: 30vh;
     width: 100%;
 
-  background-color: red;
+  background-color: #e1f2fd;
 }
 
 #weekly {
   height: 46vh;
   width: 100%;
-  background-color: blue;
+  background-color: #e1f2fd;
 }
 
 #map {
