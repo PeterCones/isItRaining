@@ -26,8 +26,11 @@
     <script defer type="module" src="assets/js/map.js"></script>
 
     <!-- mapbox -->
-    <link href="https://api.mapbox.com/mapbox-gl-js/v3.14.0/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.14.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.14.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.14.0/mapbox-gl.js"></script>
 
     <title>isItRaining()</title>
   </head>
@@ -59,20 +62,14 @@
     </header>
 
     <main>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-5 mt-2 pe-1">
-            <div class="row rounded-4 mb-2" id="current">
-
-            </div>
-            <div class="row rounded-4" id="weekly">
-
-            </div>
+      <div class="container-fluid ">
+        <div class="row mt-4">
+          <div class="col-5 pe-1">
+            <div class="row rounded-4 mb-2" id="current"></div>
+            <div class="row rounded-4" id="weekly"></div>
           </div>
           <div class="col-7 p-0">
-            <div id="map" class="mt-2">
-
-            </div>
+            <div id="map" class="m-0"></div>
           </div>
         </div>
       </div>
